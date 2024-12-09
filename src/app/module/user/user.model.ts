@@ -1,12 +1,5 @@
-import { TracingChannelSubscribers } from 'diagnostics_channel';
-import mongoose, { Schema, Document } from 'mongoose';
-
-export type TUser = {
-  name: string;
-  email: string;
-  photo: string;
-  password: string;
-};
+import mongoose, { Schema } from 'mongoose';
+import { TUser } from './user.interface';
 
 // Define the Mongoose schema for the User model
 const userSchema: Schema = new Schema<TUser>({
@@ -35,9 +28,18 @@ const userSchema: Schema = new Schema<TUser>({
   password: {
     type: String,
     required: true,
-    minlength: 15,  // Add minimum length validation for security
+    minlength: 3,  // Add minimum length validation for security
   },
-});
+  role: {
+    type: String,
+    enum:['admin', 'user'],
+    default: 'user'
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false
+  }
+}, {timestamps: true});
 
 // Create and export the model
 export const User = mongoose.model<TUser>('User', userSchema);

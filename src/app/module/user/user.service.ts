@@ -1,7 +1,8 @@
-import { IUser } from './user.interface'
-import User from './user.model'
+import { TUser } from "./user.interface"
+import { User } from "./user.model"
 
-const createUser = async (payload: IUser): Promise<IUser> => {
+
+const createUser = async (payload: TUser): Promise<TUser> => {
   const result = await User.create(payload)
 
   return result
@@ -18,7 +19,7 @@ const getSingleUser = async (id: string) => {
   return result
 }
 
-const updateUser = async (id: string, data: IUser) => {
+const updateUser = async (id: string, data:TUser ) => {
   const result = await User.findByIdAndUpdate(id, data, {
     new: true,
   })

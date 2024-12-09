@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import express, {  Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
-import bookingRouter from './module/booking/booking.route'
-import tourRouter from './module/tour/tour.route'
-import userRouter from './module/user/user.router'
+import userRouter from './app/module/user/user.route'
+
 // import globalErrorHandler from './middleware/globalErrorHandler'
 
 const app = express()
@@ -11,7 +10,7 @@ const app = express()
 // middleware
 app.use(express.json())
 
-// app.use('/api/user', userRouter)
+app.use('/api/v1/user', userRouter)
 // app.use('/api/tour', tourRouter)
 // app.use('/api/booking', bookingRouter)
 

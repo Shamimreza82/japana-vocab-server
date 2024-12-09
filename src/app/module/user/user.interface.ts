@@ -3,4 +3,6 @@ export type TUser = {
     email: string; 
     photo: string; 
     password: string
+    role: 'admin' | 'user'; 
+    isDeleted: boolean;
 }
